@@ -11,6 +11,16 @@ quit
 
 sudo rfcomm bind rfcomm0 <adater mac address> 
 
+# https://askubuntu.com/questions/248817/how-to-i-connect-a-raw-serial-terminal-to-a-bluetooth-connection
+
+vim /etc/bluetooth/rfcomm.conf
+# Check for bind is no
+
+sudo rfcomm connect 0 
+
+# May have to restart bluetoth 
+
+sudo apt-get install minicom
 sudo apt-get install screen 
 screen /dev/rfcomm0
 
