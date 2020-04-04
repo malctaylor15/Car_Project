@@ -1,0 +1,30 @@
+Set up bluetooth on raspberry pi 
+
+power on 
+pairable on 
+agent on 
+default-agent
+scan on 
+pair <adapter mac address> 
+trust <adapter mac address> 
+quit 
+
+sudo rfcomm bind rfcomm0 <adater mac address> 
+
+sudo apt-get install screen 
+screen /dev/rfcomm0
+
+# In new screen enter 
+
+atz 
+atl1
+ath0
+atsp0
+
+
+
+
+Python requirements
+pyserial 
+obd 
+
