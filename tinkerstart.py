@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import obd
+import csv
 pygame.init()
 #connection = obd.OBD()
 connect = obd.Async(fast=False)
