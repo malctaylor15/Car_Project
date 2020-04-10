@@ -1,5 +1,10 @@
 Set up bluetooth on raspberry pi 
 
+# Installs
+sudo apt-get install minicom
+sudo apt-get install screen
+
+# Bluetooth steps
 power on 
 pairable on 
 agent on 
@@ -18,13 +23,16 @@ vim /etc/bluetooth/rfcomm.conf
 
 sudo rfcomm connect 0 
 
+sudo rfcomm connect rfcomm0 <<mac address>> 1 &
+
 # May have to restart bluetoth 
 
-sudo apt-get install minicom
-sudo apt-get install screen 
+
 screen /dev/rfcomm0
 
 # In new screen enter 
+
+# https://stackoverflow.com/questions/13764442/initialization-of-obd-adapter
 
 atz 
 atl1
@@ -36,5 +44,20 @@ atsp0
 
 Python requirements
 pyserial 
-obd 
+obd
+
+Try building this for diagnostics:
+https://github.com/fenugrec/freediagq
+
+
+Python things to try:
+
+Try using these constructor arguments:
+fast=False, timeout=30
+
+
+connection = obd.Async(portstr=device, baudrate=speed, protocol=protocol)
+
+while (len(connection.supported_commands) < 10):
+	connection = obd.Async(portstr=device, baudrate=speed, protocol=protocol)
 
